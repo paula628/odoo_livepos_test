@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <menuitem name="Live POS Test" id="menu_live_pos_test" sequence="91"/>
+    <menuitem id="sub_menu_live_pos_test" name="Sub Menu" parent="menu_live_pos_test"
+            sequence="3"/>
+
+    <!-- USERS -->
+        <record id="view_user_form" model="ir.ui.view">
+            <field name="name">users.form</field>
+            <field name="model">users</field>
+            <field name="arch" type="xml">
+                <form string="Users">
+                <sheet>
+                    <group>
+                    <field name="name"/>
+                    <field name="lastname"/>
+                    <field name="email"/>
+                    <field name="apartment_ids"/>
+                    <field name="total_balance" groups="live_pos_test.group_live_pos_test_all" />
+                    <field name="total_sq_meters"/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="view_user_tree" model="ir.ui.view">
+            <field name="name">users.tree</field>
+            <field name="model">users</field>
+            <field name="arch" type="xml">
+                <tree string="Users">
+                    <field name="name"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="view_user_search" model="ir.ui.view">
+            <field name="name">users.search</field>
+            <field name="model">users</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="email"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="action_view_users" model="ir.actions.act_window">
+            <field name="name">Users</field>
+            <field name="res_model">users</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_user_tree"/>
+            <field name="search_view_id" ref="view_user_search"/>
+        </record>
+
+ 
+       
+
+        <menuitem id="users_menu" name="Users" parent="sub_menu_live_pos_test"
+            sequence="3" action="action_view_users"/> 
+
+        <!-- APARTMENTS -->
+
+
+        <record id="view_apartments_form" model="ir.ui.view">
+            <field name="name">apartments.form</field>
+            <field name="model">apartments</field>
+            <field name="arch" type="xml">
+                <form string="Apartments">
+                <sheet>
+                    <group>
+                        <field name="address"/>
+                        <field name="sq_meters"/>
+                        <field name="balance" groups="live_pos_test.group_live_pos_test_all"/>
+                        <field name="user_id"/>
+                    </group>
+                    
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="view_apartments_tree" model="ir.ui.view">
+            <field name="name">apartments.tree</field>
+            <field name="model">apartments</field>
+            <field name="arch" type="xml">
+                <tree string="apartments">
+                    <field name="address"/>
+                    <field name="user_id"/>
+                    <field name="sq_meters"/>
+                    <field name="balance" groups="live_pos_test.group_live_pos_test_all"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="view_apartments_search" model="ir.ui.view">
+            <field name="name">apartments.search</field>
+            <field name="model">apartments</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="address"/>
+                    <field name="user_id"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="action_view_apartments" model="ir.actions.act_window">
+            <field name="name">Apartments</field>
+            <field name="res_model">apartments</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_apartments_tree"/>
+            <field name="search_view_id" ref="view_apartments_search"/>
+        </record>
+
+ 
+
+        <menuitem id="apartments_menu" name="Apartments" parent="sub_menu_live_pos_test"
+            sequence="4" action="action_view_apartments"/> 
+        
+
+    </data>
+</openerp>

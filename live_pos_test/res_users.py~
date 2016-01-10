@@ -1,0 +1,29 @@
+from openerp import api
+from openerp.osv import fields, osv
+
+
+class users(osv.Model):
+    """ Update of res.users class
+        - if adding groups to an user, check if base.group_user is in it
+        (member of 'Employee'), create an employee form linked to it.
+    """
+    _name = 'res.users'
+    _inherit = ['res.users']
+
+    _columns = {
+        'lastname': fields.char("Lastname"),
+        'name': fields.char("Name"),
+        'email': fields.char("Email"),
+    }
+users()
+
+class apartments(osv.Model):
+
+    _name = 'apartments'
+
+    _columns = {
+        'sq_meters': fields.char("Square Meters"),
+        'bal': fields.integer("Balance"),
+        'user_id': fields.char("User ID"),
+    }
+apartments()

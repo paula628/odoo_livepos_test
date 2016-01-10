@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="group_live_pos_test_all" model="res.groups">
+        <field name="name">Live POS Test Admin User</field>
+    </record>
+</data>
+</openerp>
